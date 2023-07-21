@@ -36,7 +36,7 @@ export const CheckQuery = async (req, res) => {
   console.log(pipeline);
 
   cursor.on('data', (document) => {
-    console.log(cursor,"Cursor Working");
+    console.log(document,"Cursor Working");
   });
 
   cursor.on('end', () => {

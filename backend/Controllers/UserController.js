@@ -1,3 +1,6 @@
+import XLSX  from 'xlsx';
+import User from '../Models/User.js'
+
 const uploadExcelFile = async (req, res) => {
   try {
     console.log("hey from route")
@@ -28,22 +31,4 @@ const uploadExcelFile = async (req, res) => {
   
 };
 
-module.exports = { uploadExcelFile };
-
-/*
-export const createBooking = async (req, res) => {
-  const newBooking = new Booking(req.body);
-  try {
-    const savedBooking = await newBooking.save();
-    res
-      .status(200)
-      .json({ sucess: "true", message: "Your Tour is Booked", data: savedBooking });
-  } catch (err) {
-    res.status(200).json({ sucess: "false", message: "Failed to Book due to Server Issues" });
-  }
-}
-*/
-
-/*
-router.post('/',verifyUser,createBooking)
-*/
+export default uploadExcelFile;
