@@ -2,16 +2,13 @@
 import express from 'express';
 import XLSX  from 'xlsx';
 import User from '../Models/User.js'
-import formidable  from 'formidable';
+// import formidable  from 'formidable';
 import multer from 'multer';
+
 // import UserRoutes from './Routes/UserRoutes.js'
 const router = express.Router();
 
 const upload = multer()
-
-
-
-
 
 router.post('/uploadExcelFile', upload.single('excelFile'),async (req, res) => {
   try {
@@ -25,13 +22,14 @@ router.post('/uploadExcelFile', upload.single('excelFile'),async (req, res) => {
     const excelFile = req.file;
 
     const workbook = XLSX.read(excelFile.buffer, { type: 'buffer' });
-    console.log(workbook)
+    //console.log(workbook)
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
     // Insert the array of users into MongoD
     await User.insertMany(jsonData);
+    console.log(jsonData);
 
     res.status(201).json({ message: 'Data inserted successfully' });
   } catch (error) {
