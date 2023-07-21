@@ -3,7 +3,7 @@ import express from 'express';
 import XLSX  from 'xlsx';
 import User from '../Models/User.js'
 import multer from 'multer';
-import CheckQuery from '../Controllers/CheckQuery.js'
+
 
 
 const router = express.Router();
