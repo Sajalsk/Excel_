@@ -33,7 +33,7 @@ export const CheckQuery = async (req, res) => {
   const cursor = collection.aggregate(pipeline);
 
 
-  console.log(pipeline);
+ // console.log(pipeline);
 
   cursor.on('data', (document) => {
     console.log(document,"Cursor Working");
